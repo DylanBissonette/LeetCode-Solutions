@@ -1,0 +1,29 @@
+# Intuition
+I knew that I would need to use n as a helper to get the index for the y values, 
+and that the x values were relatively simple just as the even indices of the array
+
+# Approach
+I began with mapping the nums array to my shuffled array on paper for the given 
+test case, then I coded this chunk
+
+# Complexity
+- Time complexity:
+O(n)
+
+- Space complexity:
+Also O(n)
+
+# Code
+```java []
+class Solution {
+    public int[] shuffle(int[] nums, int n) {
+        int shuffled[] = new int[2 * n];
+        // copy x and y values
+        for(int i = 0; i < n; i++) { 
+            shuffled[2 * i] = nums[i];
+            shuffled[2 * i + 1] = nums[i + n];
+        }
+        return shuffled;
+    }
+}
+```
