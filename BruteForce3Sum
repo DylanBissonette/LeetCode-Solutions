@@ -1,0 +1,27 @@
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        // initialize solution list
+        List<List<Integer>> solution = new ArrayList<List<Integer>>();
+
+        // brute force find triplets and ensure variable numbers are different
+        for(int i = 0; i < nums.length; i++) {
+            for(int j = 1; j < nums.length; j++) {
+                for(int k = 2; k < nums.length; k++) {
+                    if((nums[i] + nums[j] + nums[k] == 0) && (i != j) && (i != k) && (j != k)) {
+                        // create a list and sort it, so we can compare it with previous solutions 
+                        List<Integer> possibleSolution = Arrays.asList(nums[i], nums[j], nums[k]);
+                        Collections.sort(possibleSolution);
+                        // if we've seen this triplet break out, else add it
+                        if(solution.contains(possibleSolution)) {
+                            break;
+                        } else {
+                            solution.add(possibleSolution);
+                        }
+                    }
+                }
+            }
+        }
+        return solution;
+
+    }
+}
