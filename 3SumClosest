@@ -1,0 +1,31 @@
+class Solution {
+    public int threeSumClosest(int[] nums, int target) {
+        // sort the array, helps with pointer logic later
+        Arrays.sort(nums);
+
+        int champion = Integer.MAX_VALUE;
+        int minDiff = Integer.MAX_VALUE;
+        // hold i constant, simply moving j and k
+        for(int i = 0; i < nums.length; i++) {
+            int j = i + 1;
+            int k = nums.length - 1;
+            // get the current triplet value and compare to target and previous values
+            while (j < k) {
+                int currentValue = nums[i] + nums[j] + nums[k]; 
+                int currentDiff = Math.abs(currentValue - target);
+
+                if(currentDiff < minDiff) {
+                    minDiff = currentDiff;
+                    champion = currentValue;
+                } 
+                // using sorted array logic, always moving closer towards the target
+                if(currentValue < target) {
+                    j++;
+                } else {
+                    k--;
+                }
+            }
+        }
+        return champion;
+    }
+}
