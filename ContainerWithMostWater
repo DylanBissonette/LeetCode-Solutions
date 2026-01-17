@@ -1,0 +1,40 @@
+# Intuition
+<!-- Describe your first thoughts on how to solve this problem. -->
+
+# Approach
+<!-- Describe your approach to solving the problem. -->
+
+# Complexity
+- Time complexity:
+<!-- Add your time complexity here, e.g. $$O(n)$$ -->
+
+- Space complexity:
+<!-- Add your space complexity here, e.g. $$O(n)$$ -->
+
+# Code
+```java []
+class Solution {
+    public int maxArea(int[] height) {
+        int maxWater = 0;
+        
+        // start from the outside, and iterate inwards
+        int leftBound = 0;
+        int rightBound = height.length - 1;
+
+        while(leftBound < rightBound) {
+            // compare current height and width with current champion area
+            int h = Math.min(height[leftBound], height[rightBound]);
+            int w = rightBound - leftBound;
+            maxWater = Math.max(maxWater, h * w);
+
+            // adjust smaller bounds, as width shrinks, height must increase
+            if(height[leftBound] < height[rightBound]) {
+                leftBound++;
+            } else {
+                rightBound--;
+            }
+        }
+        return maxWater;
+    }
+}
+```
