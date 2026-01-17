@@ -4,14 +4,18 @@ class Solution {
         String currentString = "";
         String firstString = strs[0];
         boolean found = false;
+        // iterate over the length of the first string, that's the maximum prefix length
         for(int i = 0; i < firstString.length(); i++) {
             if(found) {
                 break;
             }
+            // concatenate the first letter onto the prefix
             commonPrefix = commonPrefix + firstString.charAt(i);
+            // iterate over each other string
             for(int j = 1; j < strs.length; j++) {
-
+                // check if next string is long enough, or if the character doesn't match 
                 if(strs[j].length() <= i || strs[j].charAt(i) != commonPrefix.charAt(i)) {
+                    // take off the recently added character
                     commonPrefix = commonPrefix.substring(0, commonPrefix.length() - 1);
                     found = true;
                     break;
