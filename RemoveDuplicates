@@ -1,0 +1,15 @@
+class Solution {
+    public int removeDuplicates(int[] nums) {
+        // initialize the position where we write to
+        int write = 1;
+        // linearly scan the array
+        for (int read = 1; read < nums.length; read++) {
+            // overwrite in the write position if we don't see a duplicate
+            if (nums[read] != nums[read - 1]) {
+                nums[write] = nums[read];
+                write++;
+            }
+        }
+        return write;
+    }
+}
