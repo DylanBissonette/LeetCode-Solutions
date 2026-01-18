@@ -1,0 +1,21 @@
+class Solution {
+    public int missingNumber(int[] nums) {
+        Arrays.sort(nums);
+        int missingNumber = -1;
+        if(nums[0] != 0) {
+            return 0;
+        }
+        
+        // since array is sorted, see which next number is missing
+        for(int i = 0; i < nums.length - 1; i++) {
+            if((nums[i] + 1) != nums[i + 1]) {
+                missingNumber = nums[i] + 1;
+            } 
+        }
+
+        if(missingNumber == -1) {
+            return nums.length;
+        }
+        return missingNumber;
+    }
+}
